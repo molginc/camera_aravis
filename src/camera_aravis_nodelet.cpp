@@ -1227,6 +1227,9 @@ void CameraAravisNodelet::setAutoSlave(bool value)
     {
       arv_device_set_string_feature_value(p_device_, "BalanceWhiteAuto", "Off");
     }
+    else{
+      ROS_WARN("BalanceWhiteAuto not implemented!");
+    }
     syncAutoParameters();
     auto_sub_ = getNodeHandle().subscribe(ros::names::remap("camera_auto_info"), 1,
                                           &CameraAravisNodelet::cameraAutoInfoCallback, this);
@@ -1325,6 +1328,7 @@ void CameraAravisNodelet::rosReconfigureCallback(Config &config, uint32_t level)
   const bool changed_trigger_source = (config_.TriggerSource != config.TriggerSource) || changed_trigger_mode;
   const bool changed_focus_pos = (config_.FocusPos != config.FocusPos);
   const bool changed_mtu = (config_.mtu != config.mtu);
+  const bool changed_balance_white_auto = (config.BalanceWhiteAuto != config.BalanceWhiteAuto);
 
   if (changed_auto_master)
   {
@@ -1337,6 +1341,17 @@ void CameraAravisNodelet::rosReconfigureCallback(Config &config, uint32_t level)
   }
 
   // Set params into the camera.
+  if ( changed_balance_white_auto){
+    if (implemented_features_["BalanceWhiteAuto"])
+    {
+      ROS_INFO("Set BalanceWhiteAuto = %s", config.ExposureAuto.c_str());
+      arv_device_set_string_feature_value(p_device_, "BalanceWhiteAuto", config.BalanceWhiteAuto.c_str());
+    }
+    else{
+      ROS_INFO("Camera does not support BalanceWhiteAuto.");
+    }
+  }
+
   if (changed_exposure_time)
   {
     if (implemented_features_["ExposureTime"])
@@ -1715,7 +1730,7 @@ void CameraAravisNodelet::discoverFeatures()
       const std::string fname(arv_gc_feature_node_get_name(fnode));
       const bool usable = arv_gc_feature_node_is_available(fnode, &error)
           && arv_gc_feature_node_is_implemented(fnode, &error);
-      ROS_INFO_STREAM("Feature " << fname << " is " << usable);
+      //ROS_INFO_STREAM("Feature " << fname << " is " << usable);
       implemented_features_.emplace(fname, usable);
       //}
     }
