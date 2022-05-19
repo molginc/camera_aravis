@@ -1,6 +1,6 @@
 /****************************************************************************
  *
- * camera_aravis
+ * camera_aravis_molg
  *
  * Copyright © 2019 Fraunhofer FKIE, Straw Lab, van Breugel Lab, and contributors
  * Authors: Dominik A. Klein,
@@ -22,17 +22,17 @@
  *
  ****************************************************************************/
 
-#include "../include/camera_aravis/camera_aravis_nodelet.h"
+#include "../include/camera_aravis_molg/camera_aravis_nodelet.h"
 
 #include <pluginlib/class_list_macros.h>
-PLUGINLIB_EXPORT_CLASS(camera_aravis::CameraAravisNodelet, nodelet::Nodelet)
+PLUGINLIB_EXPORT_CLASS(camera_aravis_molg::CameraAravisNodelet, nodelet::Nodelet)
 
-namespace camera_aravis
+namespace camera_aravis_molg
 {
 
 void renameImg(sensor_msgs::ImagePtr& in, sensor_msgs::ImagePtr& out, const std::string out_format) {
   if (!in) {
-    ROS_WARN("camera_aravis::renameImg(): no input image given.");
+    ROS_WARN("camera_aravis_molg::renameImg(): no input image given.");
     return;
   }
 
@@ -51,7 +51,7 @@ void shift(uint16_t* data, const size_t length, const size_t digits) {
 void shiftImg(sensor_msgs::ImagePtr& in, sensor_msgs::ImagePtr& out, const size_t n_digits, const std::string out_format)
 {
   if (!in) {
-    ROS_WARN("camera_aravis::shiftImg(): no input image given.");
+    ROS_WARN("camera_aravis_molg::shiftImg(): no input image given.");
     return;
   }
 
@@ -66,13 +66,13 @@ void shiftImg(sensor_msgs::ImagePtr& in, sensor_msgs::ImagePtr& out, const size_
 void interleaveImg(sensor_msgs::ImagePtr& in, sensor_msgs::ImagePtr& out, const size_t n_digits, const std::string out_format)
 {
   if (!in) {
-    ROS_WARN("camera_aravis::interleaveImg(): no input image given.");
+    ROS_WARN("camera_aravis_molg::interleaveImg(): no input image given.");
     return;
   }
 
   if (!out) {
     out.reset(new sensor_msgs::Image);
-    ROS_INFO("camera_aravis::interleaveImg(): no output image given. Reserved a new one.");
+    ROS_INFO("camera_aravis_molg::interleaveImg(): no output image given. Reserved a new one.");
   }
 
   out->header = in->header;
@@ -110,13 +110,13 @@ void interleaveImg(sensor_msgs::ImagePtr& in, sensor_msgs::ImagePtr& out, const 
 
 void unpack10p32Img(sensor_msgs::ImagePtr& in, sensor_msgs::ImagePtr& out, const std::string out_format) {
   if (!in) {
-    ROS_WARN("camera_aravis::unpack10pImg(): no input image given.");
+    ROS_WARN("camera_aravis_molg::unpack10pImg(): no input image given.");
     return;
   }
 
   if (!out) {
     out.reset(new sensor_msgs::Image);
-    ROS_INFO("camera_aravis::unpack10pImg(): no output image given. Reserved a new one.");
+    ROS_INFO("camera_aravis_molg::unpack10pImg(): no output image given. Reserved a new one.");
   }
 
   out->header = in->header;
@@ -158,13 +158,13 @@ void unpack10p32Img(sensor_msgs::ImagePtr& in, sensor_msgs::ImagePtr& out, const
 
 void unpack10PackedImg(sensor_msgs::ImagePtr& in, sensor_msgs::ImagePtr& out, const std::string out_format) {
   if (!in) {
-    ROS_WARN("camera_aravis::unpack10pImg(): no input image given.");
+    ROS_WARN("camera_aravis_molg::unpack10pImg(): no input image given.");
     return;
   }
 
   if (!out) {
     out.reset(new sensor_msgs::Image);
-    ROS_INFO("camera_aravis::unpack10pImg(): no output image given. Reserved a new one.");
+    ROS_INFO("camera_aravis_molg::unpack10pImg(): no output image given. Reserved a new one.");
   }
 
   out->header = in->header;
@@ -204,13 +204,13 @@ void unpack10PackedImg(sensor_msgs::ImagePtr& in, sensor_msgs::ImagePtr& out, co
 
 void unpack10pMonoImg(sensor_msgs::ImagePtr& in, sensor_msgs::ImagePtr& out, const std::string out_format) {
   if (!in) {
-    ROS_WARN("camera_aravis::unpack10pImg(): no input image given.");
+    ROS_WARN("camera_aravis_molg::unpack10pImg(): no input image given.");
     return;
   }
 
   if (!out) {
     out.reset(new sensor_msgs::Image);
-    ROS_INFO("camera_aravis::unpack10pImg(): no output image given. Reserved a new one.");
+    ROS_INFO("camera_aravis_molg::unpack10pImg(): no output image given. Reserved a new one.");
   }
 
   out->header = in->header;
@@ -254,13 +254,13 @@ void unpack10pMonoImg(sensor_msgs::ImagePtr& in, sensor_msgs::ImagePtr& out, con
 
 void unpack10PackedMonoImg(sensor_msgs::ImagePtr& in, sensor_msgs::ImagePtr& out, const std::string out_format) {
   if (!in) {
-    ROS_WARN("camera_aravis::unpack10pImg(): no input image given.");
+    ROS_WARN("camera_aravis_molg::unpack10pImg(): no input image given.");
     return;
   }
 
   if (!out) {
     out.reset(new sensor_msgs::Image);
-    ROS_INFO("camera_aravis::unpack10pImg(): no output image given. Reserved a new one.");
+    ROS_INFO("camera_aravis_molg::unpack10pImg(): no output image given. Reserved a new one.");
   }
 
   out->header = in->header;
@@ -298,13 +298,13 @@ void unpack10PackedMonoImg(sensor_msgs::ImagePtr& in, sensor_msgs::ImagePtr& out
 
 void unpack12pImg(sensor_msgs::ImagePtr& in, sensor_msgs::ImagePtr& out, const std::string out_format) {
   if (!in) {
-    ROS_WARN("camera_aravis::unpack12pImg(): no input image given.");
+    ROS_WARN("camera_aravis_molg::unpack12pImg(): no input image given.");
     return;
   }
 
   if (!out) {
     out.reset(new sensor_msgs::Image);
-    ROS_INFO("camera_aravis::unpack12pImg(): no output image given. Reserved a new one.");
+    ROS_INFO("camera_aravis_molg::unpack12pImg(): no output image given. Reserved a new one.");
   }
 
   out->header = in->header;
@@ -340,13 +340,13 @@ void unpack12pImg(sensor_msgs::ImagePtr& in, sensor_msgs::ImagePtr& out, const s
 
 void unpack12PackedImg(sensor_msgs::ImagePtr& in, sensor_msgs::ImagePtr& out, const std::string out_format) {
   if (!in) {
-    ROS_WARN("camera_aravis::unpack12pImg(): no input image given.");
+    ROS_WARN("camera_aravis_molg::unpack12pImg(): no input image given.");
     return;
   }
 
   if (!out) {
     out.reset(new sensor_msgs::Image);
-    ROS_INFO("camera_aravis::unpack12pImg(): no output image given. Reserved a new one.");
+    ROS_INFO("camera_aravis_molg::unpack12pImg(): no output image given. Reserved a new one.");
   }
 
   out->header = in->header;
@@ -384,13 +384,13 @@ void unpack12PackedImg(sensor_msgs::ImagePtr& in, sensor_msgs::ImagePtr& out, co
 
 void unpack565pImg(sensor_msgs::ImagePtr& in, sensor_msgs::ImagePtr& out, const std::string out_format) {
   if (!in) {
-    ROS_WARN("camera_aravis::unpack565pImg(): no input image given.");
+    ROS_WARN("camera_aravis_molg::unpack565pImg(): no input image given.");
     return;
   }
 
   if (!out) {
     out.reset(new sensor_msgs::Image);
-    ROS_INFO("camera_aravis::unpack565pImg(): no output image given. Reserved a new one.");
+    ROS_INFO("camera_aravis_molg::unpack565pImg(): no output image given. Reserved a new one.");
   }
 
   out->header = in->header;
@@ -913,17 +913,17 @@ void CameraAravisNodelet::spawnStream()
   this->set_string_service_ = pnh.advertiseService("set_string_feature_value", &CameraAravisNodelet::setStringFeatureCallback, this);
   this->set_boolean_service_ = pnh.advertiseService("set_boolean_feature_value", &CameraAravisNodelet::setBooleanFeatureCallback, this);
 
-  ROS_INFO("Done initializing camera_aravis.");
+  ROS_INFO("Done initializing camera_aravis_molg.");
 }
 
-bool CameraAravisNodelet::getIntegerFeatureCallback(camera_aravis::get_integer_feature_value::Request& request, camera_aravis::get_integer_feature_value::Response& response)
+bool CameraAravisNodelet::getIntegerFeatureCallback(camera_aravis_molg::get_integer_feature_value::Request& request, camera_aravis_molg::get_integer_feature_value::Response& response)
 {
   const char* feature_name = request.feature.c_str();
   response.response = arv_device_get_integer_feature_value(this->p_device_, feature_name);
   return true;
 }
 
-bool CameraAravisNodelet::setIntegerFeatureCallback(camera_aravis::set_integer_feature_value::Request& request, camera_aravis::set_integer_feature_value::Response& response)
+bool CameraAravisNodelet::setIntegerFeatureCallback(camera_aravis_molg::set_integer_feature_value::Request& request, camera_aravis_molg::set_integer_feature_value::Response& response)
 {
   const char* feature_name = request.feature.c_str();
   guint64 value = request.value;
@@ -936,14 +936,14 @@ bool CameraAravisNodelet::setIntegerFeatureCallback(camera_aravis::set_integer_f
   return true;
 }
 
-bool CameraAravisNodelet::getFloatFeatureCallback(camera_aravis::get_float_feature_value::Request& request, camera_aravis::get_float_feature_value::Response& response)
+bool CameraAravisNodelet::getFloatFeatureCallback(camera_aravis_molg::get_float_feature_value::Request& request, camera_aravis_molg::get_float_feature_value::Response& response)
 {
   const char* feature_name = request.feature.c_str();
   response.response = arv_device_get_float_feature_value(this->p_device_, feature_name);
   return true;
 }
 
-bool CameraAravisNodelet::setFloatFeatureCallback(camera_aravis::set_float_feature_value::Request& request, camera_aravis::set_float_feature_value::Response& response)
+bool CameraAravisNodelet::setFloatFeatureCallback(camera_aravis_molg::set_float_feature_value::Request& request, camera_aravis_molg::set_float_feature_value::Response& response)
 {
   const char* feature_name = request.feature.c_str();
   const double value = request.value;
@@ -956,14 +956,14 @@ bool CameraAravisNodelet::setFloatFeatureCallback(camera_aravis::set_float_featu
   return true;
 }
 
-bool CameraAravisNodelet::getStringFeatureCallback(camera_aravis::get_string_feature_value::Request& request, camera_aravis::get_string_feature_value::Response& response)
+bool CameraAravisNodelet::getStringFeatureCallback(camera_aravis_molg::get_string_feature_value::Request& request, camera_aravis_molg::get_string_feature_value::Response& response)
 {
   const char* feature_name = request.feature.c_str();
   response.response = arv_device_get_string_feature_value(this->p_device_, feature_name);
   return true;
 }
 
-bool CameraAravisNodelet::setStringFeatureCallback(camera_aravis::set_string_feature_value::Request& request, camera_aravis::set_string_feature_value::Response& response)
+bool CameraAravisNodelet::setStringFeatureCallback(camera_aravis_molg::set_string_feature_value::Request& request, camera_aravis_molg::set_string_feature_value::Response& response)
 {
   const char* feature_name = request.feature.c_str();
   const char* value = request.value.c_str();
@@ -976,14 +976,14 @@ bool CameraAravisNodelet::setStringFeatureCallback(camera_aravis::set_string_fea
   return true;
 }
 
-bool CameraAravisNodelet::getBooleanFeatureCallback(camera_aravis::get_boolean_feature_value::Request& request, camera_aravis::get_boolean_feature_value::Response& response)
+bool CameraAravisNodelet::getBooleanFeatureCallback(camera_aravis_molg::get_boolean_feature_value::Request& request, camera_aravis_molg::get_boolean_feature_value::Response& response)
 {
   const char* feature_name = request.feature.c_str();
   response.response = arv_device_get_boolean_feature_value(this->p_device_, feature_name);
   return true;
 }
 
-bool CameraAravisNodelet::setBooleanFeatureCallback(camera_aravis::set_boolean_feature_value::Request& request, camera_aravis::set_boolean_feature_value::Response& response)
+bool CameraAravisNodelet::setBooleanFeatureCallback(camera_aravis_molg::set_boolean_feature_value::Request& request, camera_aravis_molg::set_boolean_feature_value::Response& response)
 {
   const char* feature_name = request.feature.c_str();
   const bool value = request.value;
@@ -1001,7 +1001,7 @@ void CameraAravisNodelet::resetPtpClock()
   std::string ptp_status(arv_device_get_string_feature_value(p_device_, "GevIEEE1588Status"));
   if (ptp_status != std::string("Slave"))
   {
-    ROS_INFO("camera_aravis: Reset ptp clock");
+    ROS_INFO("camera_aravis_molg: Reset ptp clock");
     arv_device_set_boolean_feature_value(p_device_, "GevIEEE1588", false);
     arv_device_set_boolean_feature_value(p_device_, "GevIEEE1588", true);
   }
@@ -1848,4 +1848,4 @@ void CameraAravisNodelet::writeCameraFeaturesFromRosparam()
   }
 }
 
-} // end namespace camera_aravis
+} // end namespace camera_aravis_molg

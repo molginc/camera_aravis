@@ -9,10 +9,10 @@
   <arg name="serial_no"                default=""/>
   <arg name="camera_info_url"          default=""/>
 
-  <arg name="pixel_format"             default="BGR8"/>
-  <arg name="width"                    default="640"/>
-  <arg name="height"                   default="480"/>
-  <arg name="fps"                      default="25"/>
+  <arg name="pixel_format"             default="BayerRG8"/>
+  <arg name="width"                    default="5496"/>
+  <arg name="height"                   default="3672"/>
+  <arg name="fps"                      default="6"/>
 
 
   <!-- Nodelet Manager -->
@@ -38,11 +38,12 @@
       <param name="Height"               value="$(arg height)"/>
       <param name="AcquisitionFrameRate" type="double" value="$(arg fps)"/>
 
-      <param name="Gamma"                value="0.41"/>
+      <param name="Gamma"                value="0.0"/>
       <param name="Gain"                 value="0.0"/>
       <param name="AutoFunctionsROIPreset" value="AutoFunctionsROIPreset_Full"/>
-      <param name="ExposureAuto"         value="Continuous"/>
-      <param name="GainAuto"             value="Continuous"/>
+      <param name="Exposure"             value="500000"/>
+      <param name="ExposureAuto"         value="Off"/>
+      <param name="GainAuto"             value="Off"/>
       <param name="BalanceWhiteAuto"     value="Continuous"/>
 
     </node>

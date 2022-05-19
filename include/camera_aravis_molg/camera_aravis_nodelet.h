@@ -1,6 +1,6 @@
 /****************************************************************************
  *
- * camera_aravis
+ * camera_aravis_molg
  *
  * Copyright © 2019 Fraunhofer FKIE, Straw Lab, van Breugel Lab, and contributors
  * Authors: Dominik A. Klein,
@@ -61,21 +61,21 @@ extern "C" {
 #include <tf/transform_listener.h>
 #include <tf2_ros/static_transform_broadcaster.h>
 #include <tf2_ros/transform_broadcaster.h>
-#include <camera_aravis/CameraAravisConfig.h>
-#include <camera_aravis/CameraAutoInfo.h>
+#include <camera_aravis_molg/CameraAravisConfig.h>
+#include <camera_aravis_molg/CameraAutoInfo.h>
 
-#include <camera_aravis/get_integer_feature_value.h>
-#include <camera_aravis/set_integer_feature_value.h>
-#include <camera_aravis/get_float_feature_value.h>
-#include <camera_aravis/set_float_feature_value.h>
-#include <camera_aravis/get_string_feature_value.h>
-#include <camera_aravis/set_string_feature_value.h>
-#include <camera_aravis/get_boolean_feature_value.h>
-#include <camera_aravis/set_boolean_feature_value.h>
+#include <camera_aravis_molg/get_integer_feature_value.h>
+#include <camera_aravis_molg/set_integer_feature_value.h>
+#include <camera_aravis_molg/get_float_feature_value.h>
+#include <camera_aravis_molg/set_float_feature_value.h>
+#include <camera_aravis_molg/get_string_feature_value.h>
+#include <camera_aravis_molg/set_string_feature_value.h>
+#include <camera_aravis_molg/get_boolean_feature_value.h>
+#include <camera_aravis_molg/set_boolean_feature_value.h>
 
 #include "camera_buffer_pool.h"
 
-namespace camera_aravis
+namespace camera_aravis_molg
 {
 
 typedef CameraAravisConfig Config;
@@ -241,28 +241,28 @@ protected:
 
   // Services
   ros::ServiceServer get_integer_service_;
-  bool getIntegerFeatureCallback(camera_aravis::get_integer_feature_value::Request& request, camera_aravis::get_integer_feature_value::Response& response);
+  bool getIntegerFeatureCallback(camera_aravis_molg::get_integer_feature_value::Request& request, camera_aravis_molg::get_integer_feature_value::Response& response);
 
   ros::ServiceServer get_float_service_;
-  bool getFloatFeatureCallback(camera_aravis::get_float_feature_value::Request& request, camera_aravis::get_float_feature_value::Response& response);
+  bool getFloatFeatureCallback(camera_aravis_molg::get_float_feature_value::Request& request, camera_aravis_molg::get_float_feature_value::Response& response);
 
   ros::ServiceServer get_string_service_;
-  bool getStringFeatureCallback(camera_aravis::get_string_feature_value::Request& request, camera_aravis::get_string_feature_value::Response& response);
+  bool getStringFeatureCallback(camera_aravis_molg::get_string_feature_value::Request& request, camera_aravis_molg::get_string_feature_value::Response& response);
 
   ros::ServiceServer get_boolean_service_;
-  bool getBooleanFeatureCallback(camera_aravis::get_boolean_feature_value::Request& request, camera_aravis::get_boolean_feature_value::Response& response);
+  bool getBooleanFeatureCallback(camera_aravis_molg::get_boolean_feature_value::Request& request, camera_aravis_molg::get_boolean_feature_value::Response& response);
 
   ros::ServiceServer set_integer_service_;
-  bool setIntegerFeatureCallback(camera_aravis::set_integer_feature_value::Request& request, camera_aravis::set_integer_feature_value::Response& response);
+  bool setIntegerFeatureCallback(camera_aravis_molg::set_integer_feature_value::Request& request, camera_aravis_molg::set_integer_feature_value::Response& response);
 
   ros::ServiceServer set_float_service_;
-  bool setFloatFeatureCallback(camera_aravis::set_float_feature_value::Request& request, camera_aravis::set_float_feature_value::Response& response);
+  bool setFloatFeatureCallback(camera_aravis_molg::set_float_feature_value::Request& request, camera_aravis_molg::set_float_feature_value::Response& response);
 
   ros::ServiceServer set_string_service_;
-  bool setStringFeatureCallback(camera_aravis::set_string_feature_value::Request& request, camera_aravis::set_string_feature_value::Response& response);
+  bool setStringFeatureCallback(camera_aravis_molg::set_string_feature_value::Request& request, camera_aravis_molg::set_string_feature_value::Response& response);
 
   ros::ServiceServer set_boolean_service_;
-  bool setBooleanFeatureCallback(camera_aravis::set_boolean_feature_value::Request& request, camera_aravis::set_boolean_feature_value::Response& response);
+  bool setBooleanFeatureCallback(camera_aravis_molg::set_boolean_feature_value::Request& request, camera_aravis_molg::set_boolean_feature_value::Response& response);
 
   // triggers a shot at regular intervals, sleeps in between
   void softwareTriggerLoop();
@@ -352,6 +352,6 @@ protected:
   std::vector<ConversionFunction> convert_formats;
 };
 
-} // end namespace camera_aravis
+} // end namespace camera_aravis_molg
 
 #endif /* INCLUDE_CAMERA_ARAVIS_CAMERA_ARAVIS_NODELET_H_ */

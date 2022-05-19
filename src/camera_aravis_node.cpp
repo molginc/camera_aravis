@@ -39,16 +39,16 @@
 
 
 #include <nodelet/loader.h>
-#include "../include/camera_aravis/camera_aravis_nodelet.h"
+#include "../include/camera_aravis_molg/camera_aravis_nodelet.h"
 
 
 int main(int argc, char** argv) 
 {
-	ros::init(argc, argv, "camera_aravis");
+	ros::init(argc, argv, "camera_aravis_molg");
 	nodelet::Loader manager(ros::NodeHandle("~"));
 	nodelet::M_string remap(ros::names::getRemappings());
 	nodelet::V_string nargv;
-	manager.load(ros::this_node::getName(), "camera_aravis/CameraAravisNodelet", remap, nargv);
+	manager.load(ros::this_node::getName(), "camera_aravis_molg/CameraAravisNodelet", remap, nargv);
 	ros::spin();
     
     return 0;

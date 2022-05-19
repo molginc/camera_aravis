@@ -41,7 +41,7 @@ extern "C" {
 #include <map>
 #include <stack>
 
-namespace camera_aravis
+namespace camera_aravis_molg
 {
 
 class CameraBufferPool : public boost::enable_shared_from_this<CameraBufferPool>

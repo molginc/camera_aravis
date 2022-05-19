@@ -22,9 +22,9 @@
  *
  ****************************************************************************/
 
-#include "../include/camera_aravis/camera_buffer_pool.h"
+#include "../include/camera_aravis_molg/camera_buffer_pool.h"
 
-namespace camera_aravis
+namespace camera_aravis_molg
 {
 
 CameraBufferPool::CameraBufferPool(ArvStream *stream, size_t payload_size_bytes, size_t n_preallocated_buffers) :

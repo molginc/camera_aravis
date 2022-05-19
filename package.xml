@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>camera_aravis</name>
+  <name>camera_aravis_molg</name>
   <version>4.0.1</version>
   <description>camera_aravis: A complete and comfortable GenICam (USB3Vision and GigEVision) based camera driver for ROS (ethernet and usb).</description>
 
