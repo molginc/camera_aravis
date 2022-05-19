@@ -1,6 +1,6 @@
 /****************************************************************************
  *
- * camera_aravis
+ * camera_aravis_molg
  *
  * Copyright © 2019 Fraunhofer FKIE, Straw Lab, van Breugel Lab, and contributors
  * Authors: Dominik A. Klein,
@@ -44,7 +44,7 @@
 
 int main(int argc, char** argv) 
 {
-	ros::init(argc, argv, "camera_aravis_molg");
+	ros::init(argc, argv, "camera_aravis");
 	nodelet::Loader manager(ros::NodeHandle("~"));
 	nodelet::M_string remap(ros::names::getRemappings());
 	nodelet::V_string nargv;

@@ -1,6 +1,6 @@
 /****************************************************************************
  *
- * camera_aravis
+ * camera_aravis_molg
  *
  * Copyright © 2019 Fraunhofer FKIE, Straw Lab, van Breugel Lab, and contributors
  * Authors: Dominik A. Klein,
@@ -111,6 +111,6 @@ protected:
   Ptr self_;
 };
 
-} /* namespace camera_aravis */
+} /* namespace camera_aravis_molg */
 
 #endif /* INCLUDE_CAMERA_ARAVIS_CAMERA_BUFFER_POOL_H_ */
